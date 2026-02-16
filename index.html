@@ -13,12 +13,58 @@
         
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ff69b4 0%, #ff1493 50%, #d63384 100%);
             min-height: 100vh;
             padding: 20px;
+            overflow: hidden;
+            perspective: 1000px;
+            position: relative;
+        }
+
+        .hearts-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .heart {
+            position: absolute;
+            font-size: 2em;
+            opacity: 0.6;
+            animation: float-3d linear infinite;
+            filter: drop-shadow(0 0 15px rgba(255, 20, 147, 0.6)) drop-shadow(0 0 25px rgba(255, 105, 180, 0.4));
+            transform-style: preserve-3d;
+        }
+
+        @keyframes float-3d {
+            0% {
+                transform: translateY(100vh) rotateZ(0deg) rotateX(0deg) rotateY(0deg) scale(0.5);
+                opacity: 0;
+            }
+            10% {
+                opacity: 0.8;
+            }
+            90% {
+                opacity: 0.8;
+            }
+            100% {
+                transform: translateY(-100vh) rotateZ(360deg) rotateX(720deg) rotateY(360deg) scale(1.2);
+                opacity: 0;
+            }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
         }
         
         .container {
+            position: relative;
+            z-index: 1;
             max-width: 900px;
             margin: 0 auto;
         }
@@ -55,17 +101,17 @@
             padding: 25px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
-            border-left: 5px solid #667eea;
+            border-left: 5px solid #ff1493;
         }
         
         .question-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
-            border-left-color: #764ba2;
+            box-shadow: 0 12px 30px rgba(255, 20, 147, 0.3);
+            border-left-color: #d63384;
         }
         
         .question-card h3 {
-            color: #667eea;
+            color: #ff1493;
             margin-bottom: 15px;
             font-size: 1.2em;
             line-height: 1.4;
@@ -86,7 +132,7 @@
         }
         
         .cta-section h2 {
-            color: #667eea;
+            color: #ff1493;
             margin-bottom: 20px;
             font-size: 1.8em;
         }
@@ -99,7 +145,7 @@
         
         .btn {
             display: inline-block;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #ff69b4 0%, #d63384 100%);
             color: white;
             padding: 12px 30px;
             border-radius: 50px;
@@ -126,7 +172,7 @@
         .category-label {
             display: inline-block;
             background: #f0f0f0;
-            color: #667eea;
+            color: #ff1493;
             padding: 5px 12px;
             border-radius: 20px;
             font-size: 0.85em;
@@ -136,6 +182,8 @@
     </style>
 </head>
 <body>
+    <div class="hearts-background" id="heartsBackground"></div>
+    
     <div class="container">
         <header>
             <h1>💬 xoxo-gossip-roncalli</h1>
@@ -208,5 +256,47 @@
             <p>🤐 Tutti i segreti rimangono nel nostro archivio speciale | 💭 Fatto per chi ama scoprire | 🌟 xoxo-gossip-roncalli 2026</p>
         </footer>
     </div>
-</body>
+
+    <script>
+        const heartsBackground = document.getElementById('heartsBackground');
+        
+        function createHeart() {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            
+            // Posizione casuale orizzontale
+            const leftPosition = Math.random() * 100;
+            heart.style.left = leftPosition + '%';
+            
+            // Durata animazione casuale
+            const duration = 5 + Math.random() * 5;
+            heart.style.animationDuration = duration + 's';
+            
+            // Delay casuale per variare l'effetto
+            const delay = Math.random() * 2;
+            heart.style.animationDelay = delay + 's';
+            
+            // Rotazione casuale
+            const rotateX = Math.random() * 360;
+            const rotateY = Math.random() * 360;
+            heart.style.setProperty('--rotateX', rotateX + 'deg');
+            heart.style.setProperty('--rotateY', rotateY + 'deg');
+            
+            heartsBackground.appendChild(heart);
+            
+            // Rimuovere il cuore dopo l'animazione
+            setTimeout(() => {
+                heart.remove();
+            }, (duration + delay) * 1000);
+        }
+        
+        // Creare cuori continuamente
+        setInterval(createHeart, 400);
+        
+        // Creare alcuni cuori iniziali
+        for (let i = 0; i < 15; i++) {
+            setTimeout(createHeart, i * 300);
+        }
+    </script>
 </html>
