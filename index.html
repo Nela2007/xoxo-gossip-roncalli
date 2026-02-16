@@ -128,49 +128,37 @@
         }
         
         .question-card {
-            background: linear-gradient(135deg, #fff5f8 0%, #fff 100%);
-            padding: 30px;
-            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.25);
+            background: white;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
-            clip-path: polygon(
-                50% 0%,
-                61% 35%,
-                98% 35%,
-                68% 57%,
-                79% 91%,
-                50% 70%,
-                21% 91%,
-                32% 57%,
-                2% 35%,
-                39% 35%
-            );
-            border: 2px solid #ff1493;
-            position: relative;
+            border-left: 5px solid #ff1493;
+            border-radius: 12px;
         }
         
         .question-card:hover {
-            transform: scale(1.08) translateY(-10px);
-            box-shadow: 0 15px 40px rgba(255, 20, 147, 0.4);
-            background: linear-gradient(135deg, #fff0f5 0%, #fff 100%);
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(255, 20, 147, 0.3);
+            border-left-color: #d63384;
         }
         
         .question-card h3 {
-            color: #d63384;
+            color: #ff1493;
             margin-bottom: 15px;
-            font-size: 1.1em;
+            font-size: 1.2em;
             line-height: 1.4;
             font-weight: 700;
         }
         
         .question-card p {
-            color: #555;
+            color: #333;
             line-height: 1.6;
             margin-bottom: 10px;
         }
         
         .question-card .emoji {
-            font-size: 1.6em;
-            margin-right: 8px;
+            font-size: 1.8em;
+            margin-right: 10px;
         }
         
         .cta-section {
@@ -311,6 +299,30 @@
 
     <script>
         const heartsBackground = document.getElementById('heartsBackground');
+        const giantHeartsContainer = document.getElementById('giantHeartsContainer');
+        
+        // Creare cuori giganti decorativi
+        function createGiantHearts() {
+            const positions = [
+                { top: '10%', left: '5%', delay: 0, duration: 8 },
+                { top: '70%', right: '8%', delay: 1, duration: 10 },
+                { top: '40%', left: '80%', delay: 2, duration: 9 },
+                { bottom: '15%', left: '10%', delay: 0.5, duration: 11 }
+            ];
+            
+            positions.forEach(pos => {
+                const giantHeart = document.createElement('div');
+                giantHeart.classList.add('giant-heart');
+                giantHeart.innerHTML = '❤️';
+                giantHeart.style.top = pos.top || 'auto';
+                giantHeart.style.bottom = pos.bottom || 'auto';
+                giantHeart.style.left = pos.left || 'auto';
+                giantHeart.style.right = pos.right || 'auto';
+                giantHeart.style.animationDelay = pos.delay + 's';
+                giantHeart.style.animationDuration = pos.duration + 's';
+                giantHeartsContainer.appendChild(giantHeart);
+            });
+        }
         
         function createHeart() {
             const heart = document.createElement('div');
@@ -382,6 +394,9 @@
                 cupid.remove();
             }, (duration + delay) * 1000);
         }
+        
+        // Creare i cuori giganti al caricamento
+        createGiantHearts();
         
         // Creare cuori continuamente
         setInterval(createHeart, 400);
