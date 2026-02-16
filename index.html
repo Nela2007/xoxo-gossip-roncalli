@@ -34,27 +34,58 @@
 
         .heart {
             position: absolute;
-            font-size: 2em;
-            opacity: 0.6;
+            font-size: 4em;
+            opacity: 0.75;
             animation: float-3d linear infinite;
-            filter: drop-shadow(0 0 15px rgba(255, 20, 147, 0.6)) drop-shadow(0 0 25px rgba(255, 105, 180, 0.4));
+            filter: drop-shadow(0 0 20px rgba(255, 20, 147, 0.8)) drop-shadow(0 0 35px rgba(255, 105, 180, 0.6)) drop-shadow(0 0 50px rgba(255, 20, 147, 0.4));
             transform-style: preserve-3d;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
         }
 
         @keyframes float-3d {
             0% {
-                transform: translateY(100vh) rotateZ(0deg) rotateX(0deg) rotateY(0deg) scale(0.5);
+                transform: translateY(100vh) rotateZ(0deg) rotateX(0deg) rotateY(0deg) scale(0.3);
                 opacity: 0;
             }
-            10% {
-                opacity: 0.8;
+            5% {
+                opacity: 0.9;
             }
-            90% {
-                opacity: 0.8;
+            50% {
+                transform: translateY(50vh) rotateZ(180deg) rotateX(360deg) rotateY(180deg) scale(1);
+            }
+            95% {
+                opacity: 0.9;
             }
             100% {
-                transform: translateY(-100vh) rotateZ(360deg) rotateX(720deg) rotateY(360deg) scale(1.2);
+                transform: translateY(-100vh) rotateZ(360deg) rotateX(720deg) rotateY(360deg) scale(0.3);
                 opacity: 0;
+            }
+        }
+
+        .giant-hearts {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .giant-heart {
+            position: absolute;
+            font-size: 12em;
+            opacity: 0.08;
+            color: rgba(255, 255, 255, 0.3);
+            animation: sway 8s ease-in-out infinite;
+        }
+
+        @keyframes sway {
+            0%, 100% {
+                transform: translateX(0px) translateY(0px) rotate(0deg);
+            }
+            50% {
+                transform: translateX(20px) translateY(-20px) rotate(5deg);
             }
         }
 
@@ -97,30 +128,49 @@
         }
         
         .question-card {
-            background: white;
-            border-radius: 12px;
-            padding: 25px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            background: linear-gradient(135deg, #fff5f8 0%, #fff 100%);
+            padding: 30px;
+            box-shadow: 0 8px 25px rgba(255, 20, 147, 0.25);
             transition: all 0.3s ease;
-            border-left: 5px solid #ff1493;
+            clip-path: polygon(
+                50% 0%,
+                61% 35%,
+                98% 35%,
+                68% 57%,
+                79% 91%,
+                50% 70%,
+                21% 91%,
+                32% 57%,
+                2% 35%,
+                39% 35%
+            );
+            border: 2px solid #ff1493;
+            position: relative;
         }
         
         .question-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(255, 20, 147, 0.3);
-            border-left-color: #d63384;
+            transform: scale(1.08) translateY(-10px);
+            box-shadow: 0 15px 40px rgba(255, 20, 147, 0.4);
+            background: linear-gradient(135deg, #fff0f5 0%, #fff 100%);
         }
         
         .question-card h3 {
-            color: #ff1493;
+            color: #d63384;
             margin-bottom: 15px;
-            font-size: 1.2em;
+            font-size: 1.1em;
             line-height: 1.4;
+            font-weight: 700;
+        }
+        
+        .question-card p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 10px;
         }
         
         .question-card .emoji {
-            font-size: 1.8em;
-            margin-right: 10px;
+            font-size: 1.6em;
+            margin-right: 8px;
         }
         
         .cta-section {
@@ -183,6 +233,7 @@
     </style>
 </head>
 <body>
+    <div class="giant-hearts" id="giantHeartsContainer"></div>
     <div class="hearts-background" id="heartsBackground"></div>
     
     <div class="container">
@@ -270,6 +321,10 @@
             const leftPosition = Math.random() * 100;
             heart.style.left = leftPosition + '%';
             
+            // Variabilità di dimensione casuale
+            const sizeVariation = 0.8 + Math.random() * 0.6;
+            heart.style.fontSize = (4 * sizeVariation) + 'em';
+            
             // Durata animazione casuale
             const duration = 5 + Math.random() * 5;
             heart.style.animationDuration = duration + 's';
@@ -301,6 +356,10 @@
             // Posizione casuale orizzontale
             const leftPosition = Math.random() * 100;
             cupid.style.left = leftPosition + '%';
+            
+            // Variabilità di dimensione casuale
+            const sizeVariation = 0.7 + Math.random() * 0.7;
+            cupid.style.fontSize = (4 * sizeVariation) + 'em';
             
             // Durata animazione casuale
             const duration = 6 + Math.random() * 4;
