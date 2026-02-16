@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xoxo-gossip-roncalli - Domande Interessanti</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+            padding: 30px 20px;
+        }
+        
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        
+        header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+            font-style: italic;
+        }
+        
+        .questions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        
+        .question-card {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            border-left: 5px solid #667eea;
+        }
+        
+        .question-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+            border-left-color: #764ba2;
+        }
+        
+        .question-card h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+            line-height: 1.4;
+        }
+        
+        .question-card .emoji {
+            font-size: 1.8em;
+            margin-right: 10px;
+        }
+        
+        .cta-section {
+            background: white;
+            border-radius: 12px;
+            padding: 40px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            margin-bottom: 40px;
+        }
+        
+        .cta-section h2 {
+            color: #667eea;
+            margin-bottom: 20px;
+            font-size: 1.8em;
+        }
+        
+        .cta-section p {
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 1.05em;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s ease;
+            border: none;
+            cursor: pointer;
+            font-size: 1em;
+        }
+        
+        .btn:hover {
+            transform: scale(1.05);
+        }
+        
+        footer {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            font-size: 0.95em;
+            opacity: 0.8;
+        }
+
+        .category-label {
+            display: inline-block;
+            background: #f0f0f0;
+            color: #667eea;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            margin-top: 15px;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>💬 xoxo-gossip-roncalli</h1>
+            <p>Scopri i segreti più curiosi e poni le domande più interessanti!</p>
+        </header>
+
+        <div class="questions-grid">
+            <div class="question-card">
+                <h3><span class="emoji">🤫</span>Qual è il segreto che tutti conoscono ma nessuno ammette?</h3>
+                <p>Quali sono i segreti caratteristici che la società preferisce tenere nascosti ma che tutti intuiamo?</p>
+                <div class="category-label">Comportamento Sociale</div>
+            </div>
+
+            <div class="question-card">
+                <h3><span class="emoji">💭</span>Cosa faresti se nessuno lo scoprisse mai?</h3>
+                <p>Se potessi agire senza conseguenze o giudizi, quale sarebbe la tua vera intenzione?</p>
+                <div class="category-label">Autenticità</div>
+            </div>
+
+            <div class="question-card">
+                <h3><span class="emoji">😲</span>Qual è la storia più inaspettata che hai mai scoperto su qualcuno?</h3>
+                <p>Condividi la scoperta che ti ha sorpreso di più riguardo a una persona che credevi di conoscere.</p>
+                <div class="category-label">Storie Personali</div>
+            </div>
+
+            <div class="question-card">
+                <h3><span class="emoji">🎭</span>Quale versione di te mostri al mondo e quale è la vera?</h3>
+                <p>La differenza tra la maschera pubblica e la persona autentica: quali sono le tue due versioni?</p>
+                <div class="category-label">Identità</div>
+            </div>
+
+            <div class="question-card">
+                <h3><span class="emoji">🔗</span>Quali legami nascosti connettono le persone attorno a te?</h3>
+                <p>Le storie dietro le relazioni che nessuno conosce, i fili invisibili che legano le persone.</p>
+                <div class="category-label">Relazioni</div>
+            </div>
+
+            <div class="question-card">
+                <h3><span class="emoji">⏰</span>Quale momento della tua vita vorresti potesse rimanere privato?</h3>
+                <p>Quali sono i tuoi momenti più delicati che preferiresti mantenere al riparo da sguardi indiscreti?</p>
+                <div class="category-label">Privacy</div>
+            </div>
+
+            <div class="question-card">
+                <h3><span class="emoji">🌙</span>Qual è il segreto che ti tormenta di più?</h3>
+                <p>Il peso di ciò che non puoi condividere: quale segreto sentirebbe il bisogno di confessare?</p>
+                <div class="category-label">Confessioni</div>
+            </div>
+
+            <div class="question-card">
+                <h3><span class="emoji">📱</span>Quale conversazione privata cambierebbe tutto se fosse resa pubblica?</h3>
+                <p>Le comunicazioni segrete che, se divulgate, ridisegnerebbero i vostri rapporti?</p>
+                <div class="category-label">Segreti Digitali</div>
+            </div>
+
+            <div class="question-card">
+                <h3><span class="emoji">🎪</span>Quali dinamiche rimangono nascoste dietro le quinte?</h3>
+                <p>Scopri come funzionano veramente i meccanismi nascosti nei gruppi, nelle aziende, nelle famiglie.</p>
+                <div class="category-label">Dinamiche Nascoste</div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <h2>✨ Hai una storia da raccontare?</h2>
+            <p>Questo è il luogo dove i segreti più curiosi trovano voce. Condividi liberamente, ascolta con interesse, scopri quello che altri non ti hanno mai detto.</p>
+            <button class="btn">Aggiungi il tuo Segreto</button>
+        </div>
+
+        <footer>
+            <p>🤐 Tutti i segreti rimangono nel nostro archivio speciale | 💭 Fatto per chi ama scoprire | 🌟 xoxo-gossip-roncalli 2026</p>
+        </footer>
+    </div>
+</body>
+</html>
