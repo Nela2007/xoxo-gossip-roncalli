@@ -16,7 +16,7 @@
             background: linear-gradient(135deg, #ff69b4 0%, #ff1493 50%, #d63384 100%);
             min-height: 100vh;
             padding: 20px;
-            overflow: hidden;
+            overflow-y: auto;
             perspective: 1000px;
             position: relative;
         }
@@ -290,13 +290,49 @@
                 heart.remove();
             }, (duration + delay) * 1000);
         }
+
+        function createCupid() {
+            const cupid = document.createElement('div');
+            cupid.classList.add('heart');
+            const cupidEmojis = ['😇', '💘', '🏹'];
+            cupid.innerHTML = cupidEmojis[Math.floor(Math.random() * cupidEmojis.length)];
+            
+            // Posizione casuale orizzontale
+            const leftPosition = Math.random() * 100;
+            cupid.style.left = leftPosition + '%';
+            
+            // Durata animazione casuale
+            const duration = 6 + Math.random() * 4;
+            cupid.style.animationDuration = duration + 's';
+            
+            // Delay casuale per variare l'effetto
+            const delay = Math.random() * 2;
+            cupid.style.animationDelay = delay + 's';
+            
+            // Rotazione casuale
+            const rotateX = Math.random() * 360;
+            const rotateY = Math.random() * 360;
+            cupid.style.setProperty('--rotateX', rotateX + 'deg');
+            cupid.style.setProperty('--rotateY', rotateY + 'deg');
+            
+            heartsBackground.appendChild(cupid);
+            
+            // Rimuovere l'angioletto dopo l'animazione
+            setTimeout(() => {
+                cupid.remove();
+            }, (duration + delay) * 1000);
+        }
         
         // Creare cuori continuamente
         setInterval(createHeart, 400);
         
-        // Creare alcuni cuori iniziali
+        // Creare angioletti di cupido continuamente
+        setInterval(createCupid, 600);
+        
+        // Creare alcuni cuori e angioletti iniziali
         for (let i = 0; i < 15; i++) {
             setTimeout(createHeart, i * 300);
+            setTimeout(createCupid, i * 400);
         }
     </script>
 </html>
